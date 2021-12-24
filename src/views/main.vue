@@ -215,6 +215,8 @@
 				<el-card v-else :body-style="siteContentViewHeight"><router-view /></el-card>
 			</main>
 		</div>
+
+<!--    <update-password v-if="updatePasswordVisible" ref="updatePassword"/>-->
 	</div>
 </template>
 
@@ -223,6 +225,7 @@ import SvgIcon from '../components/SvgIcon.vue';
 import { isURL } from '../utils/validate';
 import UpdatePassword from './update-password.vue';
 import { ref, provide } from 'vue';
+import nu from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: { SvgIcon, UpdatePassword },
 	data: function() {
@@ -262,6 +265,20 @@ export default {
 		}
 	},
 	methods: {
+    updatePasswordHandle: function () {
+      this.updatePasswordVisible = true
+      this.$nextTick(() => {
+        this.$refs['updatePassword'].init()
+      })
+    },
+    logout: function () {
+      let that = this;
+      that.$http('user/logout', 'GET', null, true, function () {
+        localStorage.removeItem('permissions')
+        localStorage.removeItem('token')
+        that.$router.push({name:'Login'})
+      })
+    },
 		handleSwitch: function() {
 			if (this.sidebarFold) {
 				this.navbarLayoutType = '';
@@ -287,7 +304,7 @@ export default {
 				this.height=provide('height',{ height: height-40 + 'px' })
 			}
 			this.siteContentViewHeight = { minHeight: height + 'px'};
-			
+
 		},
 		routeHandle: function(route) {
 			//每次切换页面，重新计算页面高度和内容区高度

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="" />
+    <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/update-password.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/update-password.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="22fVckfpAupCf1qR1chz9onykY8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,7 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1640228710221</updated>
       <workItem from="1640228711331" duration="4768000" />
-      <workItem from="1640309493275" duration="2440000" />
+      <workItem from="1640309493275" duration="11322000" />
     </task>
     <servers />
   </component>

@@ -149,6 +149,7 @@
 <script>
 import AddOrUpdate from './user-add-or-update.vue';
 import Dimiss from './dimiss.vue';
+import nu from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: {
 		AddOrUpdate,
@@ -193,11 +194,63 @@ export default {
 		},
 		selectionChangeHandle: function(val) {
 			this.dataListSelections = val;
-		}
+		},
+    loadDataList: function () {
+		  let that = this
+		  let data = {
+		    page: that.pageIndex,
+        length: that.pageSize,
+        name: that.dataForm.name,
+        sex: that.dataForm.sex,
+        role: that.dataForm.role,
+        deptId: that.dataForm.deptId,
+        status: that.dataForm.status,
+      }
+      that.$http('user/searchUserByPage', 'POST',data, true, function (res){
+        let page = res.page
+        let list = page.list
+        list.forEach(item => {
+          if (item.status === 1) {
+            item.status = '在职'
+          } else if (item.status === 2) {
+            item.status = '离职'
+          }
+        })
+        that.dataList = list
+        that.totalCount = page.totalCount
+        that.dataListLoading = false
+      })
+    },
+    sizeChangeHandle: function (val) {
+		  this.pageSize = val
+      this.loadDataList()
+    },
+    currentChangeHandle: function (val) {
+		  this.pageIndex = val
+      this.loadDataList()
+    },
+    searchHandle: function (){
+		  this.$refs['dataForm'].validate(valid => {
+		    if (valid) {
+          this.$refs['dataForm'].clearValidate();
+          if (this.dataForm.name === ''){
+            this.dataForm.name = null
+          }
+          if (this.pageIndex !== 1){
+            this.pageIndex = 1
+          }
+          this.loadDataList()
+        } else {
+		      return false
+        }
+      })
+
+    }
 	},
 	created: function() {
 		this.loadRoleList();
 		this.loadDeptList();
+		this.loadDataList();
 	}
 };
 </script>

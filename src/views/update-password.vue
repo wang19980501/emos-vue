@@ -21,10 +21,12 @@
 </template>
 
 <script>
+import {isPassword} from "../utils/validate";
+
 export default {
 	data() {
 		const validateConfirmPassword = (rule, value, callback) => {
-			if (value != this.dataForm.newPassword) {
+			if (value !== this.dataForm.newPassword) {
 				callback(new Error('两次输入的密码不一致'));
 			} else {
 				callback();
@@ -48,8 +50,44 @@ export default {
 			}
 		};
 	},
+
 	methods: {
-		
+		dataFormSubmit: function () {
+      let that = this
+      this.$refs['dataForm'].validate(valid => {
+        if (valid) {
+          let data = {password: that.dataForm.confirmPassword}
+          that.$http('/user/updatePassword','POST',data,true,function (res){
+            if (res.rows === 1) {
+              that.$message({
+                message: '修改密码成功',
+                type: 'success',
+                duration: 1200
+              })
+              that.visible = false
+            } else {
+              that.$message({
+                message: '修改密码失败',
+                type: 'error',
+                duration: 1200
+              })
+            }
+          })
+        } else {
+          that.$message({
+            message: '密码修改失败',
+            type: 'error',
+            duration: 1200
+          })
+        }
+      })
+    },
+    init: function () {
+      this.visible = true
+      this.$nextTick(() => {
+        this.$refs['dataForm'].resetFields();
+      })
+    },
 	}
 };
 </script>
