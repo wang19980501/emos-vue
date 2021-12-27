@@ -245,6 +245,12 @@ export default {
         }
       })
 
+    },
+    addHandle: function () {
+		  this.addOrUpdateVisible = true;
+		  this.$nextTick(() => {
+		    this.$refs["addOrUpdate"].init();
+      })
     }
 	},
 	created: function() {

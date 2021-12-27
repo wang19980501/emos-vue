@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/update-password.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/update-password.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user-add-or-update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user-add-or-update.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +26,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../kvm/dcp-web" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\WebStorm 2020.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -38,11 +38,25 @@
       <option name="presentableId" value="Default" />
       <updated>1640228710221</updated>
       <workItem from="1640228711331" duration="4768000" />
-      <workItem from="1640309493275" duration="11322000" />
+      <workItem from="1640309493275" duration="12318000" />
+      <workItem from="1640396428096" duration="941000" />
+      <workItem from="1640572270933" duration="4949000" />
     </task>
+    <task id="LOCAL-00001" summary="增加登录、用户列表分页查询、修改用户密码和退出登录">
+      <created>1640337441340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640337441340</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加登录、用户列表分页查询、修改用户密码和退出登录" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加登录、用户列表分页查询、修改用户密码和退出登录" />
   </component>
 </project>

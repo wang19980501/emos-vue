@@ -149,7 +149,49 @@ export default {
 				}
 			});
 		},
-		
+    dataFormSubmit: function () {
+		  let that = this
+      console.log(that.$refs["dataForm"])
+      that.$refs["dataForm"].validate(valid => {
+        console.log(valid)
+
+        if (valid) {
+          console.log(dayjs(that.dataForm.hiredate).format('YYYY-MM-DD'))
+          let data = {
+            userId : that.dataForm.id,
+            username : that.dataForm.username,
+            password : that.dataForm.password,
+            name : that.dataForm.name,
+            sex : that.dataForm.sex,
+            tel : that.dataForm.tel,
+            email : that.dataForm.email,
+            hiredate : dayjs(that.dataForm.hiredate).format('YYYY-MM-DD'),
+            role : that.dataForm.role,
+            deptId : that.dataForm.deptId,
+            status : that.dataForm.status
+          }
+          console.log(that.dataForm.id)
+          that.$http(`user/${!that.dataForm.id ? 'insert' : 'update'}`, 'POST',data, true, function (res){
+            if (res.rows === 1){
+              that.$message({
+                message: '操作成功',
+                type: 'success',
+                duration: 1200
+              });
+              that.visible = false;
+              that.$emit('refreshDataList');
+            } else {
+              that.$message({
+                message: '操作失败',
+                type: 'error',
+                duration: 1200
+              })
+            }
+          })
+        }
+      })
+    }
+
 	}
 };
 </script>
