@@ -125,18 +125,80 @@ export default {
             }
         };
     },
-    methods: {
-        selectionChangeHandle: function(val) {
-            this.dataListSelections = val;
-        },
-        selectable: function(row, index) {
-            if (row.systemic || row.users > 0) {
-                return false;
+  created() {
+      this.loadDataList()
+  },
+  methods: {
+    loadDataList: function (){
+      let that = this;
+      that.dataListLoading = true;
+      let data = {
+        roleName: that.dataForm.roleName,
+        page: that.pageIndex,
+        length: that.pageSize
+      }
+      that.$http('/role/searchRoleByPage','POST',data,true,(res)=>{
+        let page = res.page;
+        that.dataList = page.list;
+        that.totalCount = page.totalCount;
+        that.dataListLoading = false;
+      })
+
+    },
+    selectionChangeHandle: function(val) {
+        this.dataListSelections = val;
+    },
+    selectable: function(row, index) {
+        if (row.systemic || row.users > 0) {
+            return false;
+        }
+        return true;
+    },
+    addHandle: function (){
+      this.addOrUpdateVisible = true
+      this.$nextTick(()=>{
+        this.$refs['addOrUpdate'].init();
+      })
+    },
+    deleteHandle: function (id) {
+      let that = this;
+      let ids = id ? [id] : that.dataListSelections.map(item => {
+        return item.id
+      })
+      if (ids.length === 0){
+        that.$message({
+          message: '请选择',
+          type: 'warning',
+          duration: 1200
+        })
+      } else {
+        that.$confirm('确定要删除选中删除的记录？', '提示',{
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(()=>{
+          that.$http('role/deleteRoleByIds', 'POST', {ids: ids}, true, (res)=> {
+            if (res.rows > 0){
+              that.$message({
+                message: '操作成功',
+                type: 'success',
+                duration: 1200
+              })
+              that.loadDataList();
+            } else {
+              that.$message({
+                message: '操作失败',
+                type: 'error',
+                duration: 1200
+              })
             }
-            return true;
-        },
-        
-        
+          })
+        })
+      }
+    },
+
+
+
     }
 };
 </script>

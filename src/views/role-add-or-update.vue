@@ -95,7 +95,32 @@ export default {
 				});
 			});
 		},
-		
+    dataFormSubmit: function (){
+		  let that = this;
+		  let data = {
+		    roleName: that.dataForm.roleName,
+        permissions: that.dataForm.permissions,
+        desc: that.dataForm.desc
+      }
+      that.$http('role/insert','POST', data, true, (res)=> {
+        if (res.rows === 1){
+          that.$message({
+            message: "操作成功",
+            type: 'success',
+            duration: 1200
+          })
+          that.visible = false
+          that.$emit("refreshDataList");
+        } else {
+          that.$message({
+            message: "操作失败",
+            type: 'error',
+            duration: 1200
+          })
+        }
+      })
+    },
+
 	}
 };
 </script>
