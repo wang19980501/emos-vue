@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/role-add-or-update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/role-add-or-update.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/role.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/role.vue" afterDir="false" />
     </list>
@@ -24,7 +25,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ppw/ppw" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\WebStorm 2020.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -42,7 +43,12 @@
       <workItem from="1640396428096" duration="941000" />
       <workItem from="1640572270933" duration="4978000" />
       <workItem from="1640748919438" duration="7700000" />
-      <workItem from="1640826392969" duration="10479000" />
+      <workItem from="1640826392969" duration="10546000" />
+      <workItem from="1640912214021" duration="5978000" />
+      <workItem from="1641279188854" duration="1280000" />
+      <workItem from="1641364013094" duration="2640000" />
+      <workItem from="1641784297413" duration="622000" />
+      <workItem from="1641797078330" duration="3554000" />
     </task>
     <task id="LOCAL-00001" summary="增加登录、用户列表分页查询、修改用户密码和退出登录">
       <created>1640337441340</created>
@@ -65,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640767973070</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="角色管理">
+      <created>1640858412744</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640858412745</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,7 +88,8 @@
     <MESSAGE value="增加登录、用户列表分页查询、修改用户密码和退出登录" />
     <MESSAGE value="增加新增用户" />
     <MESSAGE value="增加修改、删除用户" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加修改、删除用户" />
+    <MESSAGE value="角色管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="角色管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

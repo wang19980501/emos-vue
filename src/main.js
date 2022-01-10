@@ -117,6 +117,7 @@ app.config.globalProperties.$http = function(url, method, data, async, fun) {
 			}
 		},
 		error: function(e) {
+			console.log("请求失败:", e.responseText)
 			if (e.status == undefined) {
 				ElMessage.error({
 					message: "前端页面错误",
@@ -130,12 +131,11 @@ app.config.globalProperties.$http = function(url, method, data, async, fun) {
 					})
 				} else {
 					ElMessage.error({
-						message: e.responseText,
+						message: e.responseText == undefined? '请求失败': e.responseText,
 						duration: 1200
 					});
 				}
 			}
-
 		}
 	})
 }

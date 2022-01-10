@@ -143,7 +143,9 @@ export default {
         that.totalCount = page.totalCount;
         that.dataListLoading = false;
       })
-
+    },
+    searchHandle: function (){
+      this.loadDataList();
     },
     selectionChangeHandle: function(val) {
         this.dataListSelections = val;
@@ -158,6 +160,12 @@ export default {
       this.addOrUpdateVisible = true
       this.$nextTick(()=>{
         this.$refs['addOrUpdate'].init();
+      })
+    },
+    updateHandle: function (id,systemic){
+      this.addOrUpdateVisible = true
+      this.$nextTick(()=>{
+        this.$refs['addOrUpdate'].init(id,systemic);
       })
     },
     deleteHandle: function (id) {

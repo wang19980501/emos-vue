@@ -19,7 +19,7 @@
 			<el-form-item label="权限" prop="permissions">
 				<el-transfer
 					v-model="dataForm.permissions"
-					:data="permisionList"
+					:data="permissionList"
 					size="medium"
 					:titles="['权限列表', '具备权限']"
 					filterable
@@ -49,7 +49,7 @@ export default {
 				desc: null,
 				changed: false
 			},
-			permisionList: [],
+			permissionList: [],
 			oldPermissions: [],
 			dataRule: {
 				roleName: [
@@ -66,6 +66,9 @@ export default {
 	methods: {
 		init: function(id, systemic) {
 			let that = this;
+			if (id !== null){
+			  that
+      }
 			that.dataForm.id = id || 0;
 			that.systemic = systemic;
 			that.visible = true;
@@ -91,18 +94,27 @@ export default {
 						}
 						temp.push({ key: one.id, label: `${one.moduleName}（${one.actionName}）`, disabled: disabled });
 					}
-					that.permisionList = temp;
+					that.permissionList = temp;
 				});
 			});
 		},
     dataFormSubmit: function (){
 		  let that = this;
+		  let changed = false;
+		  console.log("比较："+that.oldPermissions)
+		  console.log(that.dataForm.permissions.join(','))
+      console.log(that.oldPermissions != that.dataForm.permissions.join(','))
+		  if (that.oldPermissions != that.dataForm.permissions.join(',')){
+		    changed = true;
+      }
 		  let data = {
+		    id: that.dataForm.id,
 		    roleName: that.dataForm.roleName,
         permissions: that.dataForm.permissions,
-        desc: that.dataForm.desc
+        desc: that.dataForm.desc,
+        changed: changed,
       }
-      that.$http('role/insert','POST', data, true, (res)=> {
+      that.$http(`role/${!that.dataForm.id ? 'insert' : 'update'}`,'POST', data, true, (res)=> {
         if (res.rows === 1){
           that.$message({
             message: "操作成功",
