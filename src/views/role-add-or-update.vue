@@ -101,9 +101,6 @@ export default {
     dataFormSubmit: function (){
 		  let that = this;
 		  let changed = false;
-		  console.log("比较："+that.oldPermissions)
-		  console.log(that.dataForm.permissions.join(','))
-      console.log(that.oldPermissions != that.dataForm.permissions.join(','))
 		  if (that.oldPermissions != that.dataForm.permissions.join(',')){
 		    changed = true;
       }

@@ -80,7 +80,61 @@ export default {
 				}
 			});
 		},
-		
+    dataFormSubmit: function (){
+		  let that = this;
+		  if (that.dataForm.id){
+        let data = {
+          id: that.dataForm.id,
+          deptName: that.dataForm.deptName,
+          tel: that.dataForm.tel,
+          email: that.dataForm.email,
+          desc: that.dataForm.desc,
+        }
+        that.$http('dept/update','POST',data,true,function (res){
+          if (res.rows === 1){
+            that.$message({
+              message: "操作成功",
+              type: 'success',
+              duration: 1200
+            })
+            that.visible = false
+            that.$emit("refreshDataList");
+          } else {
+            that.$message({
+              message: "操作失败",
+              type: 'error',
+              duration: 1200
+            })
+          }
+        })
+      } else {
+        let data = {
+          deptName: that.dataForm.deptName,
+          tel: that.dataForm.tel,
+          email: that.dataForm.email,
+          desc: that.dataForm.desc,
+        }
+        that.$http('dept/insert','POST',data,true,function (res){
+          if (res.rows === 1){
+            that.$message({
+              message: "操作成功",
+              type: 'success',
+              duration: 1200
+            })
+            that.visible = false
+            that.$emit("refreshDataList");
+          } else {
+            that.$message({
+              message: "操作失败",
+              type: 'error',
+              duration: 1200
+            })
+          }
+        })
+      }
+
+    },
+
 	}
 };
 </script>

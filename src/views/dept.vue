@@ -113,8 +113,78 @@ export default {
 			}
 		};
 	},
-	methods: {
-		
+  created() {
+	  this.loadDataList();
+  },
+  methods: {
+	  loadDataList: function (){
+      let that = this;
+      that.dataListLoading = true;
+      let data = {
+        deptName: that.dataForm.deptName,
+        page: that.pageIndex,
+        length: that.pageSize
+      }
+      that.$http('/dept/searchDeptByPage','POST',data,true,(res)=>{
+        let page = res.page;
+        that.dataList = page.list;
+        that.totalCount = page.totalCount;
+        that.dataListLoading = false;
+      })
+    },
+    searchHandle: function (){
+	    this.loadDataList()
+    },
+    addHandle: function (){
+	    this.addOrUpdateVisible = true;
+	    this.$nextTick(() => {
+        this.$refs['addOrUpdate'].init();
+      })
+    },
+    updateHandle: function (id){
+	    this.addOrUpdateVisible = true;
+      this.$nextTick(() => {
+        this.$refs['addOrUpdate'].init(id);
+      })
+    },
+    deleteHandle: function (id){
+      let that = this;
+      let ids = id ? [id] : that.dataListSelections.map(item => {
+        return item.id
+      })
+      if (ids.length === 0){
+        that.$message({
+          message: '没有选中记录',
+          type: 'warning',
+          duration: 1200
+        })
+      } else {
+        that.$confirm('确定要删除选中的记录？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          that.$http('/dept/deleteDeptByIds','POST', {ids: ids}, true, (res)=>{
+            if (res.rows > 0){
+              that.$message({
+                message: '操作成功',
+                type: 'success',
+                duration: 1200
+              })
+              that.loadDataList();
+            } else {
+              that.$message({
+                message: '未能删除记录',
+                type: 'warning',
+                duration: 1200
+              })
+            }
+          })
+        })
+      }
+
+    },
+
 		selectable:function(row,index){
 			if(row.emps>0){
 				return false
@@ -124,10 +194,17 @@ export default {
 		selectionChangeHandle: function(val) {
 			this.dataListSelections = val;
 		},
-		
-		
+    sizeChangeHandle: function (val){
+      this.pageSize = val
+      this.loadDataList();
+    },
+    currentChangeHandle: function (val){
+      this.pageIndex = val
+      this.loadDataList();
+    },
+
 	},
-	
+
 };
 </script>
 
