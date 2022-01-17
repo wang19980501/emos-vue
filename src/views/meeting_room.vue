@@ -122,9 +122,57 @@ export default {
 			}
 		};
 	},
-	methods: {
-		
-		selectionChangeHandle: function(val) {
+  created: function() {
+    this.loadDataList();
+  },
+  methods: {
+    loadDataList: function() {
+      let that = this;
+      that.dataListLoading = true;
+      let data = {
+        name: that.dataForm.name,
+        canDelete: that.dataForm.canDelete == 'all' ? null : that.dataForm.canDelete,
+        page: that.pageIndex,
+        length: that.pageSize
+      };
+      that.$http('meeting_room/searchMeetingRoomByPage', 'POST', data, true, function(resp) {
+        let page = resp.page;
+        that.dataList = page.list;
+        that.totalCount = page.totalCount;
+        that.dataListLoading = false;
+      });
+    },
+    searchHandle: function() {
+      this.$refs['dataForm'].validate(valid => {
+        if (valid) {
+          this.$refs['dataForm'].clearValidate();
+          if (this.dataForm.name == '') {
+            this.dataForm.name = null;
+          }
+          if (this.pageIndex != 1) {
+            this.pageIndex = 1;
+          }
+          this.loadDataList();
+        } else {
+          return false;
+        }
+      });
+    },
+    addHandle: function() {
+      this.addOrUpdateVisible = true;
+      this.$nextTick(() => {
+        this.$refs.addOrUpdate.init();
+      });
+    },
+
+    updateHandle: function(id) {
+      this.addOrUpdateVisible = true;
+      this.$nextTick(() => {
+        this.$refs.addOrUpdate.init(id);
+      });
+    },
+
+    selectionChangeHandle: function(val) {
 			this.dataListSelections = val;
 		},
 		sizeChangeHandle: function(val) {
@@ -136,8 +184,47 @@ export default {
 			this.pageIndex = val;
 			this.loadDataList();
 		},
-		
-	},
+    deleteHandle: function(id) {
+      let that = this;
+      let ids = id
+          ? [id]
+          : that.dataListSelections.map(item => {
+            return item.id;
+          });
+      if (ids.length == 0) {
+        that.$message({
+          message: '没有选中记录',
+          type: 'warning',
+          duration: 1200
+        });
+      } else {
+        that.$confirm(`确定要删除选中的记录？`, '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          that.$http('meeting_room/deleteMeetingRoomByIds', 'POST', { ids: ids }, true, function(resp) {
+            if (resp.rows > 0) {
+              that.$message({
+                message: '操作成功',
+                type: 'success',
+                duration: 1200
+              });
+              that.loadDataList();
+            } else {
+              that.$message({
+                message: '未能删除记录',
+                type: 'warning',
+                duration: 1200
+              });
+            }
+          });
+        });
+      }
+    },
+
+
+  },
 
 };
 </script>
