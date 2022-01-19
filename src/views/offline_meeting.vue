@@ -109,6 +109,8 @@ import SvgIcon from '../components/SvgIcon.vue';
 import dayjs from 'dayjs';
 import Add from './offline_meeting-add.vue';
 import Info from './offline_meeting-info.vue';
+import br from "../../dist/assets/index.es.6bca9f65";
+import va from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: { SvgIcon, Add, Info },
 	data: function() {
@@ -161,6 +163,77 @@ export default {
 		};
 	},
 	methods: {
+	  loadDataList: function (){
+	    let that = this;
+	    that.dataListLoading = true;
+	    let data = {
+	      name: that.dataForm.name,
+	      mold: that.dataForm.mold,
+        page: that.pageIndex,
+        length: that.pageSize
+      };
+	    if (that.dataForm.date == null || that.dataForm.date === ""){
+	      data.date = dayjs(Date.now()).format('YYYY-MM-DD');
+      } else {
+        console.log(dayjs("time=",that.dataForm.date).format('YYYY-MM-DD'))
+
+        data.date = dayjs(that.dataForm.date).format('YYYY-MM-DD');
+      }
+	    that.$http('meeting/searchOfflineMeetingByPage', 'POST', data, true,function (res) {
+	      let page = res.page;
+	      let temp = [];
+        for (const listKey of page.list) {
+          let json = {};
+          json.name = listKey.name;
+          json.meeting = {};
+          if (listKey.hasOwnProperty('meeting')) {
+            for (const meetingKey of listKey.meeting) {
+              let color;
+              switch (meetingKey.status) {
+                case 1:
+                  color = 'yellow';
+                  break;
+                case 3:
+                  color = 'blue';
+                  break;
+                case 4:
+                  color = 'pink';
+                  break;
+                case 5:
+                  color = 'gray';
+                  break;
+              }
+              json.meeting[meetingKey.start] = meetingKey.time + '#' + color;
+            }
+          }
+          temp.push(json)
+        }
+        that.gantt.meetingRoom = temp
+        that.totalCount = page.totalCount;
+        that.dataListLoading = false;
+      })
+    },
+    searchHandle: function () {
+	    let that = this;
+	    if (that.dataForm.name == null || that.dataForm.name == '') {
+	      that.$refs['dataForm'].validate(valid => {
+	        if (valid) {
+	          that.$refs['dataForm'].clearValidate();
+	          that.dataForm.name = null;
+	          if (that.pageIndex != 1) {
+	            that.pageIndex = 1;
+            }
+	          that.loadDataList();
+	          that.mode = 'gantt';
+          } else {
+	          return false
+          }
+        })
+      }
+    },
+    changeHandle: function (val) {
+	    this.searchHandle()
+    },
 		backHandle: function() {
 			let that = this;
 			that.mode = 'gantt';
@@ -181,8 +254,7 @@ export default {
 		})
 	},
 	created: function() {
-		
-		let that = this;	
+		let that = this;
 		//加载会议室列表
 		that.$http('meeting_room/searchAllMeetingRoom', 'GET', null, true, function(resp) {
 			that.roomList = resp.list;

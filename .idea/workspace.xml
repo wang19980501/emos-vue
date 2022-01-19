@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/meeting_room-add-or-update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/meeting_room-add-or-update.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/meeting_room.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/meeting_room.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/offline_meeting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/offline_meeting.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,9 @@
       <workItem from="1641797078330" duration="3788000" />
       <workItem from="1641863924654" duration="13023000" />
       <workItem from="1642126753210" duration="8138000" />
-      <workItem from="1642382496756" duration="1791000" />
+      <workItem from="1642382496756" duration="13323000" />
+      <workItem from="1642496198658" duration="3591000" />
+      <workItem from="1642556720263" duration="4947000" />
     </task>
     <task id="LOCAL-00001" summary="增加登录、用户列表分页查询、修改用户密码和退出登录">
       <created>1640337441340</created>
@@ -94,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642131117635</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="会议室管理">
+      <created>1642391261633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642391261633</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,7 +114,8 @@
     <MESSAGE value="增加修改、删除用户" />
     <MESSAGE value="角色管理" />
     <MESSAGE value="部门管理完结" />
-    <option name="LAST_COMMIT_MESSAGE" value="部门管理完结" />
+    <MESSAGE value="会议室管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="会议室管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
