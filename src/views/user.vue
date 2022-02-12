@@ -149,7 +149,6 @@
 <script>
 import AddOrUpdate from './user-add-or-update.vue';
 import Dimiss from './dimiss.vue';
-import nu from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: {
 		AddOrUpdate,

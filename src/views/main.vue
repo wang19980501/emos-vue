@@ -225,7 +225,6 @@ import SvgIcon from '../components/SvgIcon.vue';
 import { isURL } from '../utils/validate';
 import UpdatePassword from './update-password.vue';
 import { ref, provide } from 'vue';
-import nu from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: { SvgIcon, UpdatePassword },
 	data: function() {

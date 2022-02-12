@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="10373a22-ce79-45a7-acba-ff796a59ae3d" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/main.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/offline_meeting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/offline_meeting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +54,7 @@
       <workItem from="1642382496756" duration="13323000" />
       <workItem from="1642496198658" duration="3591000" />
       <workItem from="1642556720263" duration="4947000" />
+      <workItem from="1644682125051" duration="133000" />
     </task>
     <task id="LOCAL-00001" summary="增加登录、用户列表分页查询、修改用户密码和退出登录">
       <created>1640337441340</created>
@@ -107,6 +110,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加登录、用户列表分页查询、修改用户密码和退出登录" />

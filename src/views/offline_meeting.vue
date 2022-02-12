@@ -109,8 +109,6 @@ import SvgIcon from '../components/SvgIcon.vue';
 import dayjs from 'dayjs';
 import Add from './offline_meeting-add.vue';
 import Info from './offline_meeting-info.vue';
-import br from "../../dist/assets/index.es.6bca9f65";
-import va from "../../dist/assets/index.es.6bca9f65";
 export default {
 	components: { SvgIcon, Add, Info },
 	data: function() {
